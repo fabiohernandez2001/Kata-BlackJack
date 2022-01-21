@@ -5,17 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BlackJack {
-    private List<Card> deck;
-
-    public BlackJack(ArrayList<Card> deck) {
-        this.deck = deck;
-    }
-    public Card takeDeck(){
-        Card card=this.deck.get(0);
-        this.deck=this.deck.subList(1, this.deck.size()-1);
+    public Card pop(ArrayList<Card> deck){
+        Card card=deck.get(0);
+        deck.remove(0);
         return card;
     }
-    public List<Player> GetWinners(Player player1, Player player2, Player player3, Crupier crupier){
+    public List<Player> GetWinners(Player player1, Player player2, Player player3, Crupier crupier, ArrayList<Card> deck){
         if(crupier.isBlackJack())return null;
         ArrayList<Player> winners=new ArrayList<>();
         ArrayList<Player> players=new ArrayList<>();
@@ -27,9 +22,9 @@ public class BlackJack {
         });
         if (BlackJacks.size()>0)return BlackJacks;
         int betcrupier;
-        while((betcrupier=crupier.totalBet())<17){
+        while((betcrupier=crupier.totalBet())<=17){
             if(betcrupier>21) return players;
-            crupier.takeFromDeck(this.takeDeck());
+            crupier.takeFromDeck(pop(deck));
         }
         if(player1.totalBet()>=crupier.totalBet()){
             winners.add(player1);
