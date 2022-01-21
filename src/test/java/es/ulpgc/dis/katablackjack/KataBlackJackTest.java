@@ -37,8 +37,8 @@ public class KataBlackJackTest {
         deck.add(new RegularCard(3));
         deck.add(new Card_Value_10());
         deck.add(new RegularCard(2));
-        BlackJack bl= new BlackJack(deck);
-        List<Player> listWinners= bl.GetWinners(player1, player2, player3, crupier);
+        BlackJack bl= new BlackJack();
+        List<Player> listWinners= bl.GetWinners(player1, player2, player3, crupier, deck);
         assert (listWinners.equals(listTest));    
     }
     @Test
@@ -75,8 +75,8 @@ public class KataBlackJackTest {
         deck.add(new RegularCard(4));
         deck.add(new Card_Value_10());
         deck.add(new RegularCard(2));
-        BlackJack bl= new BlackJack(deck);
-        List<Player> listWinners= bl.GetWinners(player1, player2, player3, crupier);
+        BlackJack bl= new BlackJack();
+        List<Player> listWinners= bl.GetWinners(player1, player2, player3, crupier, deck);
         assert (listWinners.equals(listTest));    }
     
 }
